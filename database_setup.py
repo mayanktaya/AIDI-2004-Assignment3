@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students_database.db'
 db = SQLAlchemy(app)
 
 class Student(db.Model):
@@ -19,9 +19,9 @@ with app.app_context():
     # Check if the database is empty before adding initial data
     if Student.query.count() == 0:
         initial_students = [
-            Student(first_name='Ajit', last_name='Shinde', dob=datetime.strptime('2000-01-01', '%Y-%m-%d'), amount_due=1000.0),
-            Student(first_name='Sam', last_name='Curran', dob=datetime.strptime('1998-05-12', '%Y-%m-%d'), amount_due=1500.0),
-            Student(first_name='Shriram', last_name='Yadav', dob=datetime.strptime('2001-09-23', '%Y-%m-%d'), amount_due=2000.0)
+            Student(first_name='Paul', last_name='Rogers', dob=datetime.strptime('2000-02-25', '%Y-%m-%d'), amount_due=1000.0),
+            Student(first_name='Chris', last_name='Evans', dob=datetime.strptime('1998-06-15', '%Y-%m-%d'), amount_due=1500.0),
+            Student(first_name='Tony', last_name='Stark', dob=datetime.strptime('2001-04-10', '%Y-%m-%d'), amount_due=2000.0)
         ]
 
         # Add and commit the initial data
