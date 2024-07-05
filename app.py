@@ -5,7 +5,7 @@ import os
 import requests
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students_database.db'
 db = SQLAlchemy(app)
 
 class Student(db.Model):
@@ -68,11 +68,11 @@ def delete_student(student_id):
     return jsonify({'message': 'Student deleted successfully!'})
 
 # Show All Records
-@app.route('/students', methods=['GET'])
-def get_students():
-    students = Student.query.all()
+@app.route('/students_database', methods=['GET'])
+def get_students_database():
+    students_database = Student.query.all()
     student_list = []
-    for student in students:
+    for student in students_database:
         student_data = {
             'student_id': student.student_id,
             'first_name': student.first_name,
